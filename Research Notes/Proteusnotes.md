@@ -45,17 +45,17 @@ Usually, translators have to know both languages (think Japanese to English). In
 You can have both language versions and compiler versions. This separates the behavior of the language from the implementation of the language itself
 
 
-*Proteus compiler V1:*
-Input program (proteus language), output is C++
-Object language: Proteus
-Metalanguage: C++ 
-Target Language: C++ 
+##Proteus compiler V1:
+-Input program (proteus language), output is C++
+-Object language: Proteus
+-Metalanguage: C++ 
+-Target Language: C++ 
 
 Input program -> tokenizer (moves tokens to parser) -> 
 Parser -> abstract syntax tree (AST – used to understand sentences) -> typechecker 
-	Parser -> code generator (takes AST input and generates the C++ output code)
+	- Parser -> code generator (takes AST input and generates the C++ output code)
 
-*Proteus compiler V2:*
-Object language: Proteus
-Metalanguage: Swift (because C++ is not a good lang to build compilers in)
-Target language: C/C++
+##Proteus compiler V2:
+-Object language: Proteus
+-Metalanguage: Swift (because C++ is not a good lang to build compilers in)
+-Target language: C/C++
