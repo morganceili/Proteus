@@ -56,6 +56,6 @@ Parser -> abstract syntax tree (AST – used to understand sentences) -> typeche
 	- Parser -> code generator (takes AST input and generates the C++ output code)
 
 ## Proteus compiler V2:
--Object language: Proteus
--Metalanguage: Swift (because C++ is not a good lang to build compilers in)
--Target language: C/C++
+-   Object language: Proteus
+-   Metalanguage: Swift (because C++ is not a good lang to build compilers in)
+-   Target language: C/C++
