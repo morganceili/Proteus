@@ -1,0 +1,1 @@
+These markdown files are a compilation of the notes I am taking during weekly Proteus meetings, as well as notes from my own learning journey. 
