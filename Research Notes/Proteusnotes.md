@@ -36,9 +36,9 @@ Actors support “runtime monitors” where it watches the execution of a state 
 	- Ex: cpython is written in C, C is the metalanguage of python 
 
 *Target language:* output language of a compiler
-	- Ex: Java bytecode is the target language for javac
-	- Ex: Java bytecode is the target language for scalac
-	- Java bytecode doesn’t have anything specific saying it has to be Java
+-	Ex: Java bytecode is the target language for javac
+-   Ex: Java bytecode is the target language for scalac
+-   Java bytecode doesn’t have anything specific saying it has to be Java
 
 Usually, translators have to know both languages (think Japanese to English). In our case, the compiler is the translator 
 
@@ -46,10 +46,10 @@ You can have both language versions and compiler versions. This separates the be
 
 
 ## Proteus compiler V1:
-- Input program (proteus language), output is C++
-- Object language: Proteus
-- Metalanguage: C++ 
--T arget Language: C++ 
+-	Input program (proteus language), output is C++
+-	Object language: Proteus
+-   Metalanguage: C++ 
+-   Target Language: C++ 
 
 Input program -> tokenizer (moves tokens to parser) -> 
 Parser -> abstract syntax tree (AST – used to understand sentences) -> typechecker 
