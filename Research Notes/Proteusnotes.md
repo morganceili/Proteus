@@ -1,4 +1,4 @@
-**Proteus**
+## Proteus
 Language developed in collaboration with JPL. Similar to C, intended for aerospace 
 o	Constraints are very critical – must be able to work since we can’t access things once they’re in space
 -	Built-support for actors, HSMs, and runtime monitors (used for runtime verification)
@@ -16,7 +16,7 @@ o	Constraints are very critical – must be able to work since we can’t access
 •	**System ! READY{};** sends “ready” event to “system”
 •	Semantically, each actor acts independently from other actors. This means each core could be utilized for a single actor (gives you total utilization of the hardware)
 
-9/29
+### 9/29
 
 Actors support “runtime monitors” where it watches the execution of a state machine and does something in response to what another state machine does
 
@@ -45,7 +45,7 @@ Usually, translators have to know both languages (think Japanese to English). In
 You can have both language versions and compiler versions. This separates the behavior of the language from the implementation of the language itself
 
 
-##Proteus compiler V1:
+## Proteus compiler V1:
 -Input program (proteus language), output is C++
 -Object language: Proteus
 -Metalanguage: C++ 
@@ -55,7 +55,7 @@ Input program -> tokenizer (moves tokens to parser) ->
 Parser -> abstract syntax tree (AST – used to understand sentences) -> typechecker 
 	- Parser -> code generator (takes AST input and generates the C++ output code)
 
-##Proteus compiler V2:
+## Proteus compiler V2:
 -Object language: Proteus
 -Metalanguage: Swift (because C++ is not a good lang to build compilers in)
 -Target language: C/C++
