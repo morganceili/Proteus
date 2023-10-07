@@ -29,6 +29,37 @@ A compiler is usually structured with multiple phases:
 - **Phase 3 - Typechecker** looks at all the types involved and checks that they are well-typed. If yes, it will add type annotations (Annotated AST), and pass it to the code generator
 - **Phase 4 - Code Generator** is the thing that actually does the translation. For mainstream languages, this is the most complicated part, it can make or break how good the compiler is. 
 
-**stopped at 24:48** 
+*Grammar / Backus-Naur Form / Context-Free Grammar*
+digit ::= `0` | `1`
+number ::= digit | digit number (translates to digit OR digit AND number)
+number ::= digit* (EBF form - * means 0 or more of the thing tha precedes it)
+expression ::= number | expression `+` expression
+example numbers: 0, 1, 01, 101
+example expressions: 1101, 101 + 110, (1 + 111) + (01 + 10)
+
+*Language Design*
+- Types are either ints or bools
+- Declare and initizliae variables
+- Perform typical arithmetic and logical operations
+
+var is a Variable
+num is a Number
+type ::= `int` | `bool`
+vardec ::= `(``vardec` type var expression `)`
+expression ::= num | `true` | `false`| (`operator expression expression`)`
+loop ::= `(``while` expression statement`)`
+assign ::= `(``=` var expression `)`
+statement ::= vardec | loop | assign
+op ::= `+` | `-` | `&&` | `||`
+program ::= statement*
+
+(vardec int x 7)                //int x = 7
+(vardec bool y true)            //boolean y = true
+(vardec int a(+12))             //int a = 1 + 2
+(vardec bool b(&& false true))  //boolean b = false&&true
+
+
+
+
 
     
