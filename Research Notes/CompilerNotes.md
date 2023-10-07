@@ -32,24 +32,24 @@ A compiler is usually structured with multiple phases:
 ------------------------------------------------------------------
 
 **Grammar / Backus-Naur Form / Context-Free Grammar**
--digit ::= `0` | `1`
--number ::= digit | digit number (translates to digit OR digit AND number)
--number ::= digit* (EBF form - * means 0 or more of the thing tha precedes it)
--expression ::= number | expression `+` expression
--example numbers: 0, 1, 01, 101
--example expressions: 1101, 101 + 110, (1 + 111) + (01 + 10)
+- digit ::= `0` | `1`
+- number ::= digit | digit number (translates to digit OR digit AND number)
+- number ::= digit* (EBF form - * means 0 or more of the thing tha precedes it)
+- expression ::= number | expression `+` expression
+- example numbers: 0, 1, 01, 101
+- example expressions: 1101, 101 + 110, (1 + 111) + (01 + 10)
 
 **Language Design**
--var is a Variable
--num is a Number
--type ::= `int` | `bool`
--vardec ::= `(``vardec` type var -expression `)`
--expression ::= num | `true` | -`false`| (`operator expression expression`)`
--loop ::= `(``while` expression -statement`)`
--assign ::= `(``=` var expression `)`
--statement ::= vardec | loop | assign
--op ::= `+` | `-` | `&&` | `||`
--program ::= statement*
+- var is a Variable
+- num is a Number
+- type ::= `int` | `bool`
+- vardec ::= `(``vardec` type var -expression `)`
+- expression ::= num | `true` | -`false`| (`operator expression expression`)`
+- loop ::= `(``while` expression -statement`)`
+- assign ::= `(``=` var expression `)`
+- statement ::= vardec | loop | assign
+- op ::= `+` | `-` | `&&` | `||`
+- program ::= statement*
 
 (vardec int x 7)                //int x = 7
 (vardec bool y true)            //boolean y = true
