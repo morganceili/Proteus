@@ -29,7 +29,7 @@ Take an FSM that reads user input and also has a "bad" state. User inputs a, end
 
 *Run-To-Completion (RTC) event processing* - A state machine can only run one event at a time
 
-*Guard conditions* - A way to make state machines more flexible, expressed as booleans and evaluated at runtime. Traditionally, the structure of states and transitions is fixed and set at design time. What if the behavior is based on user input? -> *choice pseudostates and guard conditions*. 
+*Guard conditions* - Represented with a diamond - A way to make state machines more flexible, expressed as booleans and evaluated at runtime. Traditionally, the structure of states and transitions is fixed and set at design time. What if the behavior is based on user input? -> *choice pseudostates and guard conditions*. 
 
 *Nested States* - Made up of sub-states and superstates. If a substate handles a given event, it sill not be propogated back up to the superstate. This is a case where the substate overrides the behavior from the superstates. If the transition form the superstate is the one you want, then you can delete the transition from the overriding substate and rely on the main one. This is how state hierarchy allows you to get rid of repititous states. 
 
@@ -37,9 +37,42 @@ Take an FSM that reads user input and also has a "bad" state. User inputs a, end
 
 *Software Tracing* - the output from HSMs allows you to trace the code execution, which is helpful for testing debugging.
 
+*leaf state* is the end of the substate train, meaning it has no further substates or nested intial states
+
 Some quick notes:
-- Initial transitions are able to cut through more than one level of state nesting
+- *Initial transitions* - represented as a solid circle - are able to cut through more than one level of state nesting
 - Every state crossed by any transition must be properly entered. The explicit target of the transition is not the end of the trace.
 - Any transition, including initial, needs to drill into the sub-states as long as there are initial transitions nested directly in the target state.
-- A *leaf state* is the end of the substate train, meaning it has no further substates or nested intial states
+
+ **Semantics**
+ - Top-most initial transition is attached to the transition itself. This transition can cut through nested states and reach the intended sub-state. Any state it cuts through must still be properly entered to get to the target state
+    - Top-down entry action example where s2 is the target and s211 is the leaf state: top-INIT; s-ENTRY; s2-ENTRY; 2-INIT; s21-ENTRY; s211-ENTRY; where s21 and s211 are nested inside s2
+ - The last entered state becomes the current state. This is when you can start dispatching events to your state machine
+ - *Target State Configurationg example*: 
+    - You type command "G" to dispatch event G into the state machine. The current state s211 (leaf state) doesn't have a transition labeled G, so it's passed to the next state up, s21. Since s21 has a transition labeled G, it executes the action associated with the transition. 
+    - Next, the state machine executes the transition chain that *exits* the source state configuration and *enters* the target state config. 
+    - The transition chain starts with exit actions from all states, traveling up the state heirarchy to the so-called *Least Common Ancestor (LCA)* but does not exit the LCA itself. All nested states within the superstate, but not the superstate itself, are exited
+    - Next, the *target state config* is entered in the opposite order, starting from the highest level of hierarchy down to the lowest
+- *Internal transitions vs Self transitions*
+    - Self transitions in classic FSMs (where entry/exit actions don't exitst): a self-loop on a state is used to cause a reaction in that given state. 
+    - Self transition- represented as an arrow leaving a state and circling back to the state - in HSMs is a term that refers to how a state is reset by exiting and re-entering the state
+        - Ex: the 'cancel' button on a calculator
+    - Internal transition - represented as a line ending at a square - don't have a change of state, doesn't execute exit or entry actions, it only specifies an action that needs to be taken when a certain event occurs
+
+**Implementation Strategies**
+- efficiency in time (CPU cycles)
+- efficiency in data space (RAM footprint)
+- efficiency in code space (ROM footprint)
+- monolithic vs. partitioned with various levels of granularity
+- maintainability (with manual coding)
+- maintainability (via automatic code generation)
+- traceability from design (e.g., state diagram) to code
+- traceability from code back to design
+- other, quality attributes (non-functional requirements)
+
+**Active Objects**
+
+
+
+    
 
