@@ -11,3 +11,5 @@ self transition vs internal transition?
 what is an initial transition? is it triggered by an active object?
 
 entry actions vs exit actions - I believe exit actions are the action that executes as you exit a state?
+
+with compilers: identifier token?

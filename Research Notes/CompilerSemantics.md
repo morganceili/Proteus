@@ -31,7 +31,7 @@ A compiler is usually structured with multiple phases:
 
 ------------------------------------------------------------------
 
-**Grammar / Backus-Naur Form / Context-Free Grammar**
+**Grammar / Backus-Naur Form / Context-Free Grammar** (usually done before the tokens are defined)
 - digit ::= `0` | `1`
 - number ::= digit | digit number (translates to digit OR digit AND number)
 - number ::= digit* (EBF form - * means 0 or more of the thing tha precedes it)
@@ -39,7 +39,7 @@ A compiler is usually structured with multiple phases:
 - example numbers: 0, 1, 01, 101
 - example expressions: 1101, 101 + 110, (1 + 111) + (01 + 10)
 
-**Language Design**
+**Language Design** (tokens are defined shortly after the grammer is defined)
 - var is a Variable
 - num is a Number
 - type ::= `int` | `bool`
@@ -60,8 +60,30 @@ A compiler is usually structured with multiple phases:
 - Declare and initizliae variables
 - Perform typical arithmetic and logical operations
 
+**Possible Tokens** for the above language design
+- IdentifierToken (String)
+- NumberToken (int)
+- IntToken
+- BoolToken
+- LeftParenToken, RightParenToken
+- VardecToken
+- TrueToken, FalseToken
+- WhileToken
+- SingleEqualsToken
+- PlusToken, MinusToken
+- LogicalAndToken, LogicalOrToken, LessThanToken
 
+*Ex*: (vardec int x 7) 
+    - LeftParenToken
+    - VardecToken
+    - IntToken
+    - IdentifierToken("x")
+    - NumberToken(7)
+    - RightParenToken
 
+**Important Note: Pokemon Yellow is Turing Complete** 
+
+*left off on vid 2 @ 1:13:37
 
 
     
