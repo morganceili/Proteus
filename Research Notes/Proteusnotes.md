@@ -110,9 +110,9 @@ List of production rules
 		}
 	}
 	```
+	- A monitor will receive the 'on' event when actor 'a' enters state 's'
 	- *monitor* is able to observe what the state machine is doing without modifying the state machine itself
 	- *Monitors listen in on pre-declared events*
-	- A monitor will receive the 'on' event when actor 'a' enters state 's'
 	- The monitor will either record the event "_HANDLE" or ignore it "_IGNORE"
 
 
