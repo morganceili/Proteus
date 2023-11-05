@@ -1,3 +1,5 @@
+## Tokenization
+
 **Ex**: Tokenizer class
 ```
 public class Tokenizer{
@@ -43,3 +45,5 @@ public Token tokenizeIdentifierOrReservedWord(){
 *Same process for tokenizing symbols (", +, =)*
 - Able to read token -> add to array list of tokens
 - Unable to read token -> probably hit something we don't recognize, or ran out of characters. Presents a problem
+
+## Parsing

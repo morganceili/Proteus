@@ -34,13 +34,7 @@ A compiler is usually structured with multiple phases:
 
 ------------------------------------------------------------------
 
-**Grammar / Backus-Naur Form / Context-Free Grammar** (usually done before the tokens are defined)
-- digit ::= `0` | `1`
-- number ::= digit | digit number (translates to digit OR digit AND number)
-- number ::= digit* (EBF form - * means 0 or more of the thing tha precedes it)
-- expression ::= number | expression `+` expression
-- example numbers: 0, 1, 01, 101
-- example expressions: 1101, 101 + 110, (1 + 111) + (01 + 10)
+# Phase 1: Tokenizer
 
 **Language Design** (tokens are defined shortly after the grammer is defined)
 - var is a Variable
@@ -95,6 +89,14 @@ A compiler is usually structured with multiple phases:
 -------------------------------------------------------------------
 
 ## Proteus Grammar Notes
+*Grammar / Backus-Naur Form / Context-Free Grammar* (usually done before the tokens are defined)
+- digit ::= `0` | `1`
+- number ::= digit | digit number (translates to digit OR digit AND number)
+- number ::= digit* (EBF form - * means 0 or more of the thing tha precedes it)
+- expression ::= number | expression `+` expression
+- example numbers: 0, 1, 01, 101
+- example expressions: 1101, 101 + 110, (1 + 111) + (01 + 10)
+*Proteus:*
 List of production rules
 `Production Rule Name: Production1 | Production2 | ... | ProductionN`
 - `ActorItem: DefHSM | DefActorOn` <-- Actor Item can be one of these two things
