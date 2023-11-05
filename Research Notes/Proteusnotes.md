@@ -59,3 +59,4 @@ Parser -> abstract syntax tree (AST – used to understand sentences) -> typeche
 -   Object language: Proteus
 -   Metalanguage: Swift (because C++ is not a good lang to build compilers in)
 -   Target language: C/C++
+

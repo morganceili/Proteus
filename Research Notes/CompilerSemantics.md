@@ -11,6 +11,9 @@ Programming languages generally run either through an interpreter or a compiler
 - Compiler 'input program' (e.g. C) goes into the compiler, and the compiler *translates* it to an intermediate language (like machine code), where it then goes into an interpreter to give the program output
 - A processor (which reads machine code) can be seen as an interpreter, it's just an interpreter that was built off of circuits instead of code
 
+- *Reserved Word* - a word that always has a certain meaning regardless of context. For example in Java, "while" cannot be delcared as a variable because it's reserved for loops
+- *Keyword* - weaker, they are context-sensitive. 
+
 ------------------------------------------------------------------
 
 A compiler is usually structured with multiple phases:
@@ -43,10 +46,10 @@ A compiler is usually structured with multiple phases:
 - var is a Variable
 - num is a Number
 - type ::= `int` | `bool`
-- vardec ::= `(``vardec` type var -expression `)`
+- vardec ::= (`vardec` type var -expression )
 - expression ::= num | `true` | -`false`| (`operator expression expression`)`
-- loop ::= `(``while` expression -statement`)`
-- assign ::= `(``=` var expression `)`
+- loop ::= (`while` expression -statement)
+- assign ::= (`=` var expression )
 - statement ::= vardec | loop | assign
 - op ::= `+` | `-` | `&&` | `||`
 - program ::= statement*
@@ -81,11 +84,25 @@ A compiler is usually structured with multiple phases:
     - NumberToken(7)
     - RightParenToken
 
+- *Tokens and Idendifier tokens*
+    - Tokens: ActorToken, StateToken, NumberToken 
+        - `2 + 3 <-- NumberToken(2), PlusToken, NumberToken(3)`
+    - Identifier Tokens are another kind of token that usually contain a name 
+        - `int x = 2 + 3 <-- IntToken, IdentifierToken("x"), EqualsToken, NumberToken(2), etc.`
+
 **Important Note: Pokemon Yellow is Turing Complete** 
 
-*left off on vid 2 @ 1:13:37
+-------------------------------------------------------------------
 
-test
+## Proteus Grammar Notes
+List of production rules
+`Production Rule Name: Production1 | Production2 | ... | ProductionN`
+- `ActorItem: DefHSM | DefActorOn` <-- Actor Item can be one of these two things
+- `Program: DefEvent* DefActor+` <-- Zero or more DefEvents, one or more DefActors
+- ActorName: NAME <-- Aything in caps is a token. There is a "name" token provided by the tokenizer
+- `DefActor: 'actor' ActorName '{' ActorItem* '}'` <-- Anything within single quotes is something written directly into the grammar
+	- *Ex* `actor Foo { ... }` where the ActorItem in between braces can be any of the things listed for the ActorItem production rule
+
 
 
     
