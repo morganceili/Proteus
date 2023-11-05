@@ -85,5 +85,7 @@ A compiler is usually structured with multiple phases:
 
 *left off on vid 2 @ 1:13:37
 
+test
+
 
     
