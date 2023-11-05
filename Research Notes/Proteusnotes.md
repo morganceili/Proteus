@@ -87,7 +87,7 @@ List of production rules
 - Events can contain data
 	- `Driver ! NOTIFY("on GO_SELF")` <-- Send a 'notify' event with the string "on GO_SELF" inside, and send it to the actor 'Driver' 
 	- The actor should have an "on" block inside that can receive the 'notify' event: `on NOTIFY(s)` where s is "on GO_SELF"
-	*full example*
+	- *full example*
 	```
 	event GO_SELF();
 	event NOTIFY(string);
@@ -102,7 +102,7 @@ List of production rules
 	```
 - Events with an underscore are pre-declared events (entry, exit, handle, ignore) that automatically get sent to all monitors in response to state machines doing different things.
 	- `event _ENTRY(actorname, statename);` <-- this actor has just entered this given state 
-	*ex:*
+	- *ex:*
 	```
 	monitor M {
 		on _ENTRY(a,s){
