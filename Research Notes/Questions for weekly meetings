@@ -1,15 +1,7 @@
-- Top-most initial transition is attached to the transition itself. This transition can cut through nested states and reach the intended sub-state. Any state it cuts through must still be properly entered to get to the target state
-    - Top-down entry action example where s2 is the target state: top-INIT; s-ENTRY; s2-ENTRY; 2-INIT
-    - Not sure if this is standard or if it only applies when the target state also has an initial state
-
-Questions regarding lesson #42: he talks about the path that transitions take, is it specific to his example or is it the process the same across the board?
 
 When a message is passed down, is it passed down to the leaf state to the be traversed back up, triggering any necessary events on the way back up?
 
-self transition vs internal transition?
 
-what is an initial transition? is it triggered by an active object?
-
-entry actions vs exit actions - I believe exit actions are the action that executes as you exit a state?
-
-with compilers: identifier token?
+- Watching Proteus semantics: 
+    - S1 has an on block, so S2 inherits. does that mean substates inherite the code from their superstates?
+    - does monitors mean literal computer monitors?

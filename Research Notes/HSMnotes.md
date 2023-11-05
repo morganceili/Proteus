@@ -45,6 +45,8 @@ Some quick notes:
 - Any transition, including initial, needs to drill into the sub-states as long as there are initial transitions nested directly in the target state.
 
  ## Semantics
+ - Entry Action: excuted when you enter a given state
+ - Exit Action: executed when you exit a given state
  - Top-most initial transition is attached to the transition itself. This transition can cut through nested states and reach the intended sub-state. Any state it cuts through must still be properly entered to get to the target state
     - Top-down entry action example where s2 is the target and s211 is the leaf state: top-INIT; s-ENTRY; s2-ENTRY; 2-INIT; s21-ENTRY; s211-ENTRY; where s21 and s211 are nested inside s2
  - The last entered state becomes the current state. This is when you can start dispatching events to your state machine

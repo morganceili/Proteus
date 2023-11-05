@@ -76,3 +76,44 @@ List of production rules
 - ActorName: NAME <-- Aything in caps is a token. There is a "name" token provided by the tokenizer
 - `DefActor: 'actor' ActorName '{' ActorItem* '}'` <-- Anything within single quotes is something written directly into the grammar
 	- *Ex* `actor Foo { ... }` where the ActorItem in between braces can be any of the things listed for the ActorItem production rule
+
+## Proteus Semantics
+- Actors hold state machines, state machines hold states
+	- if initial state is not explicit (`initial S1`), implicitly the first state in the nest becomes the initial state
+- "on" blocks - receives an event and do some execution in response (generally means a state transition)
+	- *see HSMnotes.md for entry/exit actions*
+	- a substate inherits the code from a superstate
+- Semantically, because of nested states, the only *true* state is the leaf state
+- Events can contain data
+	- `Driver ! NOTIFY("on GO_SELF")` <-- Send a 'notify' event with the string "on GO_SELF" inside, and send it to the actor 'Driver' 
+	- The actor should have an "on" block inside that can receive the 'notify' event: `on NOTIFY(s)` where s is "on GO_SELF"
+	*full example*
+	```
+	event GO_SELF();
+	event NOTIFY(string);
+
+	go S4{
+		Driver ! NOTIFY("on GO_SELF");
+	}
+
+	on NOTIFY(s){
+		println(s);
+	}
+	```
+- Events with an underscore are pre-declared events (entry, exit, handle, ignore) that automatically get sent to all monitors in response to state machines doing different things.
+	- `event _ENTRY(actorname, statename);` <-- this actor has just entered this given state 
+	*ex:*
+	```
+	monitor M {
+		on _ENTRY(a,s){
+			println(a, "enters", s);
+		}
+	}
+	```
+	- *monitor* is able to observe what the state machine is doing without modifying the state machine itself
+	- *Monitors listen in on pre-declared events*
+	- A monitor will receive the 'on' event when actor 'a' enters state 's'
+	- The monitor will either record the event "_HANDLE" or ignore it "_IGNORE"
+
+
+
